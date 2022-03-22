@@ -2,12 +2,39 @@
 <program>
     <variable>
         <name>a</name>
-        <type>char</type>
-        <value>3</value>
+        <type>int</type>
+        <value>0</value>
     </variable>
     <variable>
         <name>b</name>
         <type>int</type>
-        <value>2</value>
+        <value>0</value>
     </variable>
+    <if>
+        <expression>
+            <operator>==</operator>
+            <operand>a</operand>
+            <operand>b</operand>
+        </expression>
+        <true>
+            <statement>
+                <lhs>
+                    <label>a</label>
+                </lhs>
+                <rhs>
+                    <constant>7</constant>
+                </rhs>
+            </statement>
+        </true>
+        <false>
+            <statement>
+                <lhs>
+                    <label>a</label>
+                </lhs>
+                <rhs>
+                    <constant>8</constant>
+                </rhs>
+            </statement>
+        </false>
+    </if>
 </program>
