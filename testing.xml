@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<program>
+    <variable>
+        <name>a</name>
+        <type>char</type>
+        <value>3</value>
+    </variable>
+    <variable>
+        <name>b</name>
+        <type>int</type>
+        <value>2</value>
+    </variable>
+</program>
