@@ -1,72 +1,54 @@
 import xml.etree.ElementTree as ET
-from hashTable import hashTable
+from programTree import programTree
+from parsing import *
+from programInfo import programInfo
 
-# Global variables
-if_count = 0
-
-def assConvertIf(operator, operands):
-    returnStr = ""
-    if (operator == "=="):
-        returnStr += "beq " + symbolTable.get_register(operands[0]) + ", " + symbolTable.get_register(operands[1])
-        returnStr += ", IF_" + str(if_count) + "_TRUE\nj ELSE_" + str(if_count) + "\n"
-        return returnStr
+def parseXML(curXML, tree):
+    for curAttr in curXML:
+        pos = tree.addBranch(curAttr.tag)
+        nextTree = tree.getBranch(pos)
+        # print(repr(curAttr.text[0]))
+        # if ((curAttr.text == emptyString) or (curAttr == emptyString2)):
+        #     # print("None\n")
+        if (curAttr.text[0] == '\n'):
+            parseXML(curAttr, nextTree)
+        else:
+            nextTree.addBranch(curAttr.text)
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     # Open XML file
     file = ET.parse('testing.xml')
+    # Open XML and parsing it to a tree
     program = file.getroot()
-    # Create assembly file
-    asmfile = open("testing.asm", "w")
-    # Create the look up table
-    symbolTable = hashTable()
+    mainProgramTree = programTree("program")
+    parseXML(program, mainProgramTree)
+    # Print out the tree to check result
+    # mainProgramTree.printTree()
 
-    for instruction in program:
-        instructionType = instruction.tag
-        print("============================")
-        print(instructionType)
+    # Parsing the tree and write assembly for it
+    programInfo = programInfo()
+    parseTreetoAssembly(mainProgramTree, programInfo)
+
+
+
+
+
+
+
+
+
+
+
+
+
         # ======================================= #
-        # Parsing Variables
-        if (instructionType == "variable"):
-            name = ""
-            type = ""
-            value = 0
-            print("Parsing VARIABLE instruction...")
-            for attribute in instruction:
-                if (attribute.tag == "name"):
-                   name = attribute.text
-                if (attribute.tag == "type"):
-                   type = attribute.text
-                if (attribute.tag == "value"):
-                   value = int(attribute.text)
-            # add to the symbol table
-            symbolTable.add_variable(name, type, value)
-            # Write assembly instruction
-            asmfile.write("addiu " + symbolTable.get_register(name) + ", $0, " + str(value) + "\n")
-            print("addiu " + symbolTable.get_register(name) + ", $0, " + str(value) + "\n")
-        # ======================================= #
-        # Parsing If statement
-        if (instructionType == "if"):
-            print("Parsing IF instruction...")
-            for ifPart in instruction:
-                if ((ifPart.tag) == "expression"):
-                    operator = ""
-                    operands = []
-                    for attribute in ifPart:
-                        if(attribute.tag == "operator"):
-                            operator = attribute.text
-                        else:
-                            operands.append(attribute.text)
-                    ass_intr = assConvertIf(operator, operands)
-                    # Write assembly instruction
-                    asmfile.write(ass_intr + "\n")
-                    print(ass_intr + "\n")
-            if_count += 1
+        # # Parsing Variables
+
 
 
     # ========================================== #
-    # Close the assembly file and save the file
-    asmfile.close()
+
     # ========================================== #
     # Testing Hashing
     # symbolTable = hashTable()
@@ -75,8 +57,19 @@ if __name__ == '__main__':
     # print(symbolTable.get_type("a"))
     # print(symbolTable.get_value("b"))
 
+# ===================================== GARBAGE ==================== #
 
-
+ # for instruction in program:
+    #     pos = mainProgramTree.addBranch(instruction.tag)
+    #     curBranch = mainProgramTree.getBranch(pos)
+    #     for characteristic in instruction:
+    #         anoPos = curBranch.addBranch(characteristic.tag)
+    #         curBranch.getBranch(anoPos).addBranch(characteristic.text)
+    #         curCurBranch = curBranch.getBranch(anoPos)
+    #         for subCharac in characteristic:
+    #             anoAnoPos = curCurBranch.addBranch(subCharac.tag)
+    #             curCurBranch.getBranch(anoAnoPos).addBranch(subCharac.text)
+    #             # curCurBranch = curBranch.getBranch(anoPos)
 
 
 

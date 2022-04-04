@@ -20,3 +20,6 @@ class hashTable:
 
     def get_register(self, name):
         return self.table[name][2]
+
+    def printTable(self):
+        print(self.table)
