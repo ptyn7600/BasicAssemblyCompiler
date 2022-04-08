@@ -12,7 +12,7 @@ For each figure, there are 3 corresponding files: c file, asm file, and xml file
 * Asm-file: [micro_benchmark_variable_argument.asm](testing/micro_benchmark_variable_argument.asm)
 
 ### General Test
-There are 10 t-registers and 8 s-regsiters in this compiler. They are listed in [harshTable.py]() file. When the program runs out of the registers, it will raise the error. The current version of the xml file will run fine. To test the error case, uncomment the last variable declaration in the xml file.
+There are 10 t-registers and 8 s-regsiters in this compiler. They are listed in [harshTable.py](hashTable.py) file. When the program runs out of the registers, it will raise the error. The current version of the xml file will run fine. To test the error case, uncomment the last variable declaration in the xml file.
 
 ### Futher considered improvements:
 * Use s-registers when run out of t-registers
