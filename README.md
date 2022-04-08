@@ -18,3 +18,12 @@ There are 10 t-registers and 8 s-regsiters in this compiler. They are listed in 
 * Use s-registers when run out of t-registers
 * Release unused registers to reuse them
 
+## 2. For MicroBenchmark
+### Files
+* C-file: [micro_benchmark_for.c](testing/micro_benchmark_for.c)
+* XML-file: [micro_benchmark_for.xml](testing/micro_benchmark_for.xml)
+* Asm-file: [micro_benchmark_for.asm](testing/micro_benchmark_for.asm)
+
+### General Test
+
+### Futher considered improvements:
