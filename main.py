@@ -1,3 +1,4 @@
+import sys
 import xml.etree.ElementTree as ET
 from programTree import programTree
 from parsing import *
@@ -17,18 +18,25 @@ def parseXML(curXML, tree):
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    # Open XML file
-    file = ET.parse('testing.xml')
-    # Open XML and parsing it to a tree
-    program = file.getroot()
-    mainProgramTree = programTree("program")
-    parseXML(program, mainProgramTree)
-    # Print out the tree to check result
-    # mainProgramTree.printTree()
+    # fileName = "pop_count"
+    # fileName = "testing"
+    if (len(sys.argv) == 2):
+        # Take the filename from the argument
+        fileName = "./testing/" + sys.argv[1]
+        # Open XML file
+        file = ET.parse(fileName + ".xml")
+        # Open XML and parsing it to a tree
+        program = file.getroot()
+        mainProgramTree = programTree("program")
+        parseXML(program, mainProgramTree)
+        # Print out the tree to check result
+        # mainProgramTree.printTree()
 
-    # Parsing the tree and write assembly for it
-    programInfo = programInfo()
-    parseTreetoAssembly(mainProgramTree, programInfo)
+        # Parsing the tree and write assembly for it
+        programInfo = programInfo()
+        parseTreetoAssembly(mainProgramTree, programInfo, fileName + ".asm")
+    else:
+        print("Please input only 1 argument for the file name")
 
 
 

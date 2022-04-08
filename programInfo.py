@@ -5,13 +5,13 @@ class programInfo:
         self.count_for = 0
 
     def getWhileCount(self):
-        return self.count_while
+        return str(self.count_while)
 
     def getIfCount(self):
-        return self.count_if
+        return str(self.count_if)
 
     def getForCount(self):
-        return self.count_for
+        return str(self.count_for)
 
     def addIf(self):
         self.count_if += 1
