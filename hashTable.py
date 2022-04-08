@@ -8,20 +8,26 @@ class hashTable:
         pass
 
     def add_argument(self, var_name, var_type, var_const):
-        register = self.s_register["avail"].pop(0)
-        self.s_register["used"].append(register)
-        register = "$s" + str(register)
-        self.table[var_name] = [var_type, var_const, register]
-        self.table_reg_name[register] = var_name
-        return register
+        if (len(self.s_register["avail"]) > 0):
+            register = self.s_register["avail"].pop(0)
+            self.s_register["used"].append(register)
+            register = "$s" + str(register)
+            self.table[var_name] = [var_type, var_const, register]
+            self.table_reg_name[register] = var_name
+            return register
+        else:
+            raise Exception("Run out of s-register")
 
     def add_variable(self, var_name, var_type, var_const):
-        register = self.t_register["avail"].pop(0)
-        self.t_register["used"].append(register)
-        register = "$t" + str(register)
-        self.table[var_name] = [var_type, var_const, register]
-        self.table_reg_name[register] = var_name
-        return register
+        if (len(self.t_register["avail"]) > 0):
+            register = self.t_register["avail"].pop(0)
+            self.t_register["used"].append(register)
+            register = "$t" + str(register)
+            self.table[var_name] = [var_type, var_const, register]
+            self.table_reg_name[register] = var_name
+            return register
+        else:
+            raise Exception("Run out of t register")
 
     # def update_variable(self, var_name, var_const):
     #     self.table[var_name][1] = var_const
