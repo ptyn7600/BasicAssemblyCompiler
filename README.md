@@ -43,7 +43,7 @@ This file tests for loop. I include two while loops in this files to see if the 
 * Nested while loop
 
 ## 3. Statement-Expression MicroBenchmark
-### FIles:
+### Files:
 * C-file: [micro_benchmark_statement.c](testing/micro_benchmark_statement.c)
 * XML-file: [micro_benchmark_statement.xml](testing/micro_benchmark_statement.xml)
 * Asm-file: [micro_benchmark_statement.asm](testing/micro_benchmark_statement.asm)
