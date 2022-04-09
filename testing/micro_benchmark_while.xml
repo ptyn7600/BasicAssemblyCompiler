@@ -1,36 +1,41 @@
 <?xml version="1.0"?>
 <program>
-     <argument>
-        <name>input</name>
+    <variable>
+        <name>i</name>
         <type>int</type>
-        <value>7</value>
-    </argument>
+        <value>0</value>
+    </variable>
+    <variable>
+        <name>k</name>
+        <type>int</type>
+        <value>10</value>
+    </variable>
     <variable>
         <name>sum</name>
         <type>int</type>
         <value>0</value>
     </variable>
-   <for>
-       <init>
-            <variable>
-                <name>i</name>
-                <type>int</type>
-                <value>0</value>
-            </variable>
-           <const>32</const>
-       </init>
-       <cond>
+    <variable>
+        <name>sum1</name>
+        <type>int</type>
+        <value>0</value>
+    </variable>
+    <while>
+        <init>
+            <const>5</const>
+        </init>
+        <cond>
             <expression>
                 <operator>&lt;</operator>
                 <operand>
                     <label>i</label>
                 </operand>
                 <operand>
-                    <label>for_0_constant</label>
+                    <label>while_0_constant</label>
                 </operand>
             </expression>
-       </cond>
-       <body>
+        </cond>
+        <body>
             <statement>
                 <lhs>
                     <label>sum</label>
@@ -39,40 +44,14 @@
                     <expression>
                         <operator>+</operator>
                         <operand>
-                             <label>sum</label>
+                            <label>sum</label>
                         </operand>
                         <operand>
-                            <expression>
-                                <operator>&amp;</operator>
-                                <operand>
-                                    <label>input</label>
-                                </operand>
-                                <operand>
-                                    <const>1</const>
-                                </operand>
-                            </expression>
+                            <label>i</label>
                         </operand>
                     </expression>
                 </rhs>
             </statement>
-           <statement>
-               <lhs>
-                   <label>input</label>
-               </lhs>
-               <rhs>
-                   <expression>
-                       <operator>/</operator>
-                       <operand>
-                           <label>input</label>
-                       </operand>
-                       <operand>
-                           <const>2</const>
-                       </operand>
-                   </expression>
-               </rhs>
-           </statement>
-       </body>
-       <increment>
             <statement>
                 <lhs>
                     <label>i</label>
@@ -89,9 +68,62 @@
                     </expression>
                 </rhs>
             </statement>
-       </increment>
-       <exit>
+        </body>
+        <exit>
 
-       </exit>
-   </for>
+        </exit>
+    </while>
+    <while>
+        <init>
+            <const>5</const>
+        </init>
+        <cond>
+            <expression>
+                <operator>&gt;</operator>
+                <operand>
+                    <label>k</label>
+                </operand>
+                <operand>
+                    <label>while_1_constant</label>
+                </operand>
+            </expression>
+        </cond>
+        <body>
+            <statement>
+                <lhs>
+                    <label>sum1</label>
+                </lhs>
+                <rhs>
+                    <expression>
+                        <operator>+</operator>
+                        <operand>
+                            <label>sum1</label>
+                        </operand>
+                        <operand>
+                            <label>k</label>
+                        </operand>
+                    </expression>
+                </rhs>
+            </statement>
+            <statement>
+                <lhs>
+                    <label>k</label>
+                </lhs>
+                <rhs>
+                    <expression>
+                        <operator>-</operator>
+                        <operand>
+                            <label>k</label>
+                        </operand>
+                        <operand>
+                            <const>1</const>
+                        </operand>
+                    </expression>
+                </rhs>
+            </statement>
+        </body>
+        <exit>
+
+        </exit>
+    </while>
 </program>
