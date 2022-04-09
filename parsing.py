@@ -88,6 +88,7 @@ def pasrsingCases(programTree, symbolTable, programInfo, level, callFrom):
         # print(returnStr)
         return returnStr
 
+    return "ERRORS"
 def parseWhile(programTree, symbolTable, programInfo, level):
     returnStr = ""
     # get the branches of the tree
@@ -235,7 +236,7 @@ def parseStatement(programTree, symbolTable, programInfo, level):
         elif (side.getValue() == "rhs"):
             for subProgram in side.getBranches():
                 rhs = pasrsingCases(subProgram, symbolTable, programInfo, level, "statement")
-    print(rhs)
+    # print(rhs)
     # Simple assignment: for example x = 2
     if (str(type(rhs)) != "<class 'dict'>"):
         # print("1", end="--->")
@@ -255,7 +256,7 @@ def parseStatement(programTree, symbolTable, programInfo, level):
         # print(rhs)
         if (str(type(rhs['operands'][1])) == "<class 'list'>"):
             returnStr += rhs['operands'][1][1]
-            returnStr += "add " + lhs + ", " + rhs['operands'][0] + ", " + rhs['operands'][1][0] + "\n"
+            returnStr += processOperation(rhs['operator'], lhs, [rhs['operands'][0], rhs['operands'][1][0]], symbolTable)
             # result = int(symbolTable.get_value_from_register(rhs['operands'][0])) + \
             #          int(symbolTable.get_value_from_register(rhs['operands'][1][0]))
             # Update symbolTable
@@ -319,11 +320,13 @@ def parseExpression(programTree, symbolTable, programInfo, level, callFrom):
                 returnDict.update({"operator": operatorStr})
             elif ((eachExpress.getValue()) == "operand"):
                 # print(eachExpress.getBranches()[0].getValue())
+                print(eachExpress.getBranches()[0].getValue())
                 returnStr = pasrsingCases(eachExpress.getBranches()[0], symbolTable, programInfo, level, "expression")
                 returnDict["operands"].append(returnStr)
+        print(returnDict)
         return returnDict
     elif (callFrom == "expression"):
-        returnStr = ""
+        # returnStr = ""
         returnArr = []
         operator = ""
         for eachExpress in expressionList:
@@ -335,7 +338,7 @@ def parseExpression(programTree, symbolTable, programInfo, level, callFrom):
         name = "expression" + str(level) + "constant"
         returnReg = symbolTable.add_variable(name, "int", None)
         returnArr.append(returnReg)
-        returnStr += processOperation(operatorStr, returnReg, operands, symbolTable)
+        returnArr.append(processOperation(operatorStr, returnReg, operands, symbolTable))
         # if (len([s for s in operands if s.isdigit()]) > 0):
         #     # newValue = eval(symbolTable.get_value_from_register(operands[0]) + operator +
         #     #                 symbolTable.get_value_from_register(operands[1]))
@@ -354,7 +357,7 @@ def parseExpression(programTree, symbolTable, programInfo, level, callFrom):
         #     # returnStr += operatorStr + " " + operands[0] + ", " + operands[1] + "\n"
         #     returnStr += processOperation(0, operatorStr, returnReg, operands, symbolTable)
         #     returnArr.append(returnStr)
-        # return returnArr
+        return returnArr
     return None
 
 def processOperation(operator, lhs, operands, symbolTable):
