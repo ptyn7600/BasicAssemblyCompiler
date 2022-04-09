@@ -25,8 +25,10 @@ There are 10 t-registers and 8 s-regsiters in this compiler. They are listed in 
 * Asm-file: [micro_benchmark_for.asm](testing/micro_benchmark_for.asm)
 
 ### General Test
+This file tests for loop. I include two for loops in this files to see if the count variable for "for loop" increases after one another. 
 
 ### Futher considered improvements:
+* Nested loop
 
 ## 2. While MicroBenchmark
 ### Files
