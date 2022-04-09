@@ -235,7 +235,7 @@ def parseStatement(programTree, symbolTable, programInfo, level):
         elif (side.getValue() == "rhs"):
             for subProgram in side.getBranches():
                 rhs = pasrsingCases(subProgram, symbolTable, programInfo, level, "statement")
-    # print(rhs, end ="--> ")
+    print(rhs)
     # Simple assignment: for example x = 2
     if (str(type(rhs)) != "<class 'dict'>"):
         # print("1", end="--->")
@@ -260,14 +260,15 @@ def parseStatement(programTree, symbolTable, programInfo, level):
             #          int(symbolTable.get_value_from_register(rhs['operands'][1][0]))
             # Update symbolTable
             # symbolTable.update_variable(symbolTable.get_name_from_register(lhs), result)
-        elif (len([s for s in rhs['operands'] if s.isdigit()]) > 0):
-            # returnStr += rhs['operator'] + "iu " + lhs + ", " + str(rhs['operands'].pop(0)) + ", " \
-            #              + str(rhs['operands'].pop(0)) + "\n"
-            returnStr += processOperation(1, rhs['operator'], lhs, rhs['operands'], symbolTable)
+        # elif (len([s for s in rhs['operands'] if s.isdigit()]) > 0):
+        #     # returnStr += rhs['operator'] + "iu " + lhs + ", " + str(rhs['operands'].pop(0)) + ", " \
+        #     #              + str(rhs['operands'].pop(0)) + "\n"
+        #     returnStr += processOperation(1, rhs['operator'], lhs, rhs['operands'], symbolTable)
         else:
             # returnStr += rhs['operator'] + " " + lhs + ", " + str(rhs['operands'].pop(0)) \
             #              + ", " + str(rhs['operands'].pop(0)) + "\n"
-            returnStr += processOperation(0, rhs['operator'], lhs, rhs['operands'], symbolTable)
+            # returnStr += processOperation(0, rhs['operator'], lhs, rhs['operands'], symbolTable)
+            returnStr += processOperation(rhs['operator'], lhs, rhs['operands'], symbolTable)
     return returnStr
 
 def parseExpression(programTree, symbolTable, programInfo, level, callFrom):
@@ -360,47 +361,59 @@ def processOperation(operator, lhs, operands, symbolTable):
     returnStr = ""
     if (operator == "div"):
         op1 = symbolTable.add_variable("divConst", "int", operands[0]) if operands[0].isdigit() else operands[0]
-        returnStr += ("addiu " + symbolTable.get_register("divConst") + ", $0,  "
+        returnStr += ("addiu " + symbolTable.get_register("divConst") + ", $0, "
                       + symbolTable.get_value_from_name("divConst")) + "\n" if operands[0].isdigit() else ""
         op2 = symbolTable.add_variable("divConst", "int", operands[1]) if operands[1].isdigit() else operands[1]
         returnStr += ("addiu " + symbolTable.get_register("divConst") + ", $0, "
                       + symbolTable.get_value_from_name("divConst") + "\n") if operands[1].isdigit() else ""
+        returnStr += operator
+        returnStr += " " + str(op1) + ", " + str(op2) + "\n"
+        returnStr += "mflo " + lhs + "\n"
+    elif (operator == "mult"):
+        op1 = symbolTable.add_variable("multConst", "int", operands[0]) if operands[0].isdigit() else operands[0]
+        returnStr += ("addiu " + symbolTable.get_register("multConst") + ", $0, "
+                      + symbolTable.get_value_from_name("multConst")) + "\n" if operands[0].isdigit() else ""
+        op2 = symbolTable.add_variable("multConst", "int", operands[1]) if operands[1].isdigit() else operands[1]
+        returnStr += ("addiu " + symbolTable.get_register("multConst") + ", $0, "
+                      + symbolTable.get_value_from_name("multConst") + "\n") if operands[1].isdigit() else ""
         returnStr += operator
         returnStr += " " + str(op1) + ", " + str(op2) + "\n"
         returnStr += "mflo " + lhs + "\n"
     else:
         # When two operands are register
+        op1 = operands[0]
         if (operands[0].isdigit()):
             op1 = symbolTable.add_variable(operator+"Const", "int", operands[0])
+            returnStr += "addiu " + op1 + ", " + "$0, " +  operands[0] + "\n"
         if (operands[1].isdigit()):
             returnStr += operator + "iu " + lhs + ", " + op1 + ", " + operands[1] + "\n"
         else:
             returnStr += operator + " " + lhs + ", " + op1 + ", " + operands[1] + "\n"
     return returnStr
-def processOperation(haveConstant, operator,lhs, operands, symbolTable):
-    returnStr = ""
-    if (operator == "div"):
-        print(operands[0])
-        print(type(operands[0]))
-        print(operands[0].isdigit())
-        print(operands[1])
-        print(type(operands[1]))
-        print(operands[1].isdigit())
-        op1 = symbolTable.add_variable("divConst", "int", operands[0]) if operands[0].isdigit() else operands[0]
-        returnStr += ("addiu " + symbolTable.get_register("divConst")+ ", $0,  "
-                      + symbolTable.get_value_from_name("divConst")) + "\n" if operands[0].isdigit() else ""
-        op2 = symbolTable.add_variable("divConst", "int", operands[1]) if operands[1].isdigit() else operands[1]
-        returnStr += ("addiu " + symbolTable.get_register("divConst") + ", $0, "
-                      + symbolTable.get_value_from_name("divConst") + "\n") if operands[1].isdigit() else ""
-        returnStr += operator
-        returnStr += " " + str(op1) + ", " + str(op2) + "\n"
-        returnStr += "mflo " + lhs + "\n"
-    else:
-        returnStr += operator
-        if (haveConstant):
-            returnStr += "iu"
-        returnStr += " " + lhs + ", " + operands[0] + ", " + operands[1] + "\n"
-    return returnStr
+# def processOperation(haveConstant, operator,lhs, operands, symbolTable):
+#     returnStr = ""
+#     if (operator == "div"):
+#         print(operands[0])
+#         print(type(operands[0]))
+#         print(operands[0].isdigit())
+#         print(operands[1])
+#         print(type(operands[1]))
+#         print(operands[1].isdigit())
+#         op1 = symbolTable.add_variable("divConst", "int", operands[0]) if operands[0].isdigit() else operands[0]
+#         returnStr += ("addiu " + symbolTable.get_register("divConst")+ ", $0,  "
+#                       + symbolTable.get_value_from_name("divConst")) + "\n" if operands[0].isdigit() else ""
+#         op2 = symbolTable.add_variable("divConst", "int", operands[1]) if operands[1].isdigit() else operands[1]
+#         returnStr += ("addiu " + symbolTable.get_register("divConst") + ", $0, "
+#                       + symbolTable.get_value_from_name("divConst") + "\n") if operands[1].isdigit() else ""
+#         returnStr += operator
+#         returnStr += " " + str(op1) + ", " + str(op2) + "\n"
+#         returnStr += "mflo " + lhs + "\n"
+#     else:
+#         returnStr += operator
+#         if (haveConstant):
+#             returnStr += "iu"
+#         returnStr += " " + lhs + ", " + operands[0] + ", " + operands[1] + "\n"
+#     return returnStr
 
 def switchOperator(operator):
     # Comparison operator
@@ -423,3 +436,5 @@ def switchOperator(operator):
         return "and"
     elif (operator == "/"):
         return "div"
+    elif (operator == "*"):
+        return "mult"
