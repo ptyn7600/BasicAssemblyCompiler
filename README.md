@@ -27,3 +27,13 @@ There are 10 t-registers and 8 s-regsiters in this compiler. They are listed in 
 ### General Test
 
 ### Futher considered improvements:
+
+## 2. While MicroBenchmark
+### Files
+* C-file: [micro_benchmark_while.c](testing/micro_benchmark_while.c)
+* XML-file: [micro_benchmark_while.xml](testing/micro_benchmark_while.xml)
+* Asm-file: [micro_benchmark_while.asm](testing/micro_benchmark_while.asm)
+
+### General Test
+
+### Futher considered improvements:
