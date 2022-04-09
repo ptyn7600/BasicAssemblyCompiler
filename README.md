@@ -42,3 +42,15 @@ This file tests for loop. I include two while loops in this files to see if the 
 ### Futher considered improvements:
 * Nested while loop
 
+## 3. Statement-Expression MicroBenchmark
+### FIles:
+* C-file: [micro_benchmark_statement.c](testing/micro_benchmark_statement.c)
+* XML-file: [micro_benchmark_statement.xml](testing/micro_benchmark_statement.xml)
+* Asm-file: [micro_benchmark_statement.asm](testing/micro_benchmark_statement.asm)
+
+### General Test
+This file tests statement and expression figures. Here is the supported subset of operation = { +, -, /,* }. This compiler can support up to 3 parameters in the right-hand-side of the statement. For each parameter, we have two cases: label and constant. This section will test all the possible combination of cases.
+
+### Futher considered improvements:
+* Support %, <<, >>
+* Expand to unlimited parameters
