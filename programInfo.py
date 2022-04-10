@@ -1,8 +1,8 @@
 class programInfo:
     def __init__(self):
-        self.count_while = 0
-        self.count_if = 0
-        self.count_for = 0
+        self.count_while = -1
+        self.count_if = -1
+        self.count_for = -1
 
     def getWhileCount(self):
         return str(self.count_while)

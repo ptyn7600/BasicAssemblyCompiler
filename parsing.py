@@ -10,7 +10,7 @@ def parseTreetoAssembly(mainProgramTree, programInfo, outputFileName):
     # Traverse through all sub programs
     for subProgram in mainProgramTree.getBranches():
         returnStr += pasrsingCases(subProgram, symbolTable, programInfo, level, "main")
-        symbolTable.printTable()
+        # symbolTable.printTable()
     # Exit the program
     returnStr += "li $v0, 10\nsyscall"
     # Write to assembly file
@@ -40,6 +40,8 @@ def pasrsingCases(programTree, symbolTable, programInfo, level, callFrom):
     # ======================================= #
     # Parsing If statement
     elif (instructionType == "if"):
+        # increment the number of if count
+        programInfo.addIf()
         returnStr = parseIf(programTree, symbolTable, programInfo, level)
         # print(returnStr)
         # asmfile.write(str)
@@ -56,6 +58,7 @@ def pasrsingCases(programTree, symbolTable, programInfo, level, callFrom):
     # ======================================= #
     # Parsing For statement
     elif (instructionType == "for"):
+        programInfo.addFor()
         returnStr = parseFor(programTree, symbolTable, programInfo, level)
         # print(returnStr)
         return returnStr
@@ -63,6 +66,7 @@ def pasrsingCases(programTree, symbolTable, programInfo, level, callFrom):
     # ======================================= #
     # Parsing For statement
     elif (instructionType == "while"):
+        programInfo.addWhile()
         returnStr = parseWhile(programTree, symbolTable, programInfo, level)
         # print(returnStr)
         return returnStr
@@ -99,16 +103,15 @@ def parseWhile(programTree, symbolTable, programInfo, level):
             for eachPartInit in eachPart.getBranches():
                 returnStr += pasrsingCases(eachPartInit, symbolTable, programInfo, level + 1, "while")
         elif (eachPart.getValue() == "cond"):
-            returnStr += "WHILE_" + programInfo.getForCount() + "_COND:\n"
-            print(eachPart.getBranches()[0].getValue())
+            returnStr += "WHILE_" + programInfo.getWhileCount() + "_COND:\n"
+            # print(eachPart.getBranches()[0].getValue())
             returnStr += pasrsingCases(eachPart.getBranches()[0], symbolTable, programInfo, level + 1, "while")
         elif (eachPart.getValue() == "body"):
             for eachPartBody in eachPart.getBranches():
                 returnStr += pasrsingCases(eachPartBody, symbolTable, programInfo, level + 1, "while")
             returnStr += "j WHILE_" + programInfo.getWhileCount() + "_COND\n"
         elif (eachPart.getValue() == "exit"):
-            returnStr += "WHILE_" + programInfo.getForCount() + "_EXIT:\n"
-    programInfo.addWhile()
+            returnStr += "WHILE_" + programInfo.getWhileCount() + "_EXIT:\n"
     return returnStr
 
 
@@ -134,7 +137,6 @@ def parseFor(programTree, symbolTable, programInfo, level):
             returnStr += "j FOR_" + programInfo.getForCount() + "_COND\n"
         elif (eachPart.getValue() == "exit"):
             returnStr += "FOR_" + programInfo.getForCount() + "_EXIT:\n"
-    programInfo.addFor()
     return returnStr
 
 def parseArgument(programTree, symbolTable, level):
@@ -186,22 +188,21 @@ def parseIf(programTree, symbolTable, programInfo, level):
         elif ((eachChar.getValue()) == "true"):
             returnStr += "IF_" + programInfo.getIfCount() + "_TRUE:\n"
             for subTrue in eachChar.getBranches():
-                op1 = pasrsingCases(subTrue, symbolTable, programInfo, level,"if")
+                # print(subTrue.getValue())
+                op1 = pasrsingCases(subTrue, symbolTable, programInfo, level, "if")
                 returnStr += op1
-            returnStr += "j IF_" + programInfo.getForCount() + "_EXIT\n"
+            returnStr += "j IF_" + programInfo.getIfCount() + "_EXIT\n"
         elif ((eachChar.getValue()) == "false"):
             returnStr += "ELSE_" + programInfo.getIfCount() + ":\n"
             for subTrue in eachChar.getBranches():
                 op1 = pasrsingCases(subTrue, symbolTable, programInfo, level,"if")
                 returnStr += op1
-            returnStr += "j IF_" + programInfo.getForCount() + "_EXIT\n"
+            returnStr += "j IF_" + programInfo.getIfCount() + "_EXIT\n"
             # print(eachChar.getNumBranches())
         #     level += 1
         #     for eachStatement in eachChar.getBranches():
         #         pasrsingCases(eachStatement, symbolTable, asmfile, programInfo, level)
-    returnStr += "IF_" + programInfo.getForCount() + "_EXIT:\n"
-    # increment the number of if count
-    programInfo.addIf()
+    returnStr += "IF_" + programInfo.getIfCount() + "_EXIT:\n"
     # Return the pasrsing string
     return returnStr
 
@@ -231,6 +232,7 @@ def parseStatement(programTree, symbolTable, programInfo, level):
     for side in programTree.getBranches():
         if (side.getValue() == "lhs"):
             for subProgram in side.getBranches():
+                # print(subProgram.getValue())
                 lhs += pasrsingCases(subProgram, symbolTable, programInfo, level, "statement")
             # print(side.getBranches()[0].getValue())
         elif (side.getValue() == "rhs"):
@@ -277,13 +279,20 @@ def parseExpression(programTree, symbolTable, programInfo, level, callFrom):
     expressionList = programTree.getBranches()
     if (callFrom == "if"):
         returnStr = ""
+        operatorStr = ""
         for eachExpress in expressionList:
             if ((eachExpress.getValue()) == "operator"):
                 operator = eachExpress.getBranches()[0].getValue()
-                operatorStr = switchOperator(operator)
+                operatorStr += switchOperator(operator)
             elif ((eachExpress.getValue()) == "operand"):
                 operands.append(pasrsingCases(eachExpress.getBranches()[0], symbolTable, programInfo, level, "expression"))
-        returnStr += operatorStr + " " + operands[0] + ", " + operands[1]
+        op1 = symbolTable.add_variable("ifConst", "int", operands[0]) if operands[0].isdigit() else operands[0]
+        returnStr += ("addiu " + symbolTable.get_register("ifConst") + ", $0, "
+                      + symbolTable.get_value_from_name("divConst")) + "\n" if operands[0].isdigit() else ""
+        op2 = symbolTable.add_variable("ifConst", "int", operands[1]) if operands[1].isdigit() else operands[1]
+        returnStr += ("addiu " + symbolTable.get_register("ifConst") + ", $0, "
+                      + symbolTable.get_value_from_name("ifConst") + "\n") if operands[1].isdigit() else ""
+        returnStr += operatorStr + " " + op1 + ", " + op2
         returnStr += ", ELSE_" + programInfo.getIfCount()
         return returnStr
     elif (callFrom == "for"):
@@ -292,7 +301,7 @@ def parseExpression(programTree, symbolTable, programInfo, level, callFrom):
         for eachExpress in expressionList:
             if ((eachExpress.getValue()) == "operator"):
                 operator = eachExpress.getBranches()[0].getValue()
-                operatorStr = switchOperator(operator)
+                operatorStr += switchOperator(operator)
             elif ((eachExpress.getValue()) == "operand"):
                 operands.append(pasrsingCases(eachExpress.getBranches()[0], symbolTable, programInfo, level, "expression"))
         returnStr += operatorStr + " " + operands[0] + ", " + operands[1]
@@ -304,7 +313,7 @@ def parseExpression(programTree, symbolTable, programInfo, level, callFrom):
         for eachExpress in expressionList:
             if ((eachExpress.getValue()) == "operator"):
                 operator = eachExpress.getBranches()[0].getValue()
-                operatorStr = switchOperator(operator)
+                operatorStr += switchOperator(operator)
             elif ((eachExpress.getValue()) == "operand"):
                 operands.append(pasrsingCases(eachExpress.getBranches()[0], symbolTable, programInfo, level, "expression"))
         returnStr += operatorStr + " " + operands[0] + ", " + operands[1]
@@ -320,10 +329,10 @@ def parseExpression(programTree, symbolTable, programInfo, level, callFrom):
                 returnDict.update({"operator": operatorStr})
             elif ((eachExpress.getValue()) == "operand"):
                 # print(eachExpress.getBranches()[0].getValue())
-                print(eachExpress.getBranches()[0].getValue())
+                # print(eachExpress.getBranches()[0].getValue())
                 returnStr = pasrsingCases(eachExpress.getBranches()[0], symbolTable, programInfo, level, "expression")
                 returnDict["operands"].append(returnStr)
-        print(returnDict)
+        # print(returnDict)
         return returnDict
     elif (callFrom == "expression"):
         # returnStr = ""
