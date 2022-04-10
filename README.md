@@ -62,10 +62,10 @@ This file tests statement and expression figures. Here is the supported subset o
 * Asm-file: [micro_benchmark_if.asm](testing/micro_benchmark_if.asm)
 
 ### Description
-This file tests statement and expression figures. Here is the supported subset of operation = { +, -, /,* }. This compiler can support up to 3 parameters in the right-hand-side of the statement. For each parameter, we have two cases: label and constant. This section will test all the possible combination of cases.
+This file tests IF function. Three IFs are included to see if the compiler can increase the if_count. Three different types of expressions are also tested: label vs label, const vs label, label vs const, and const vs const.
 
 ### Futher considered improvements:
-*
+* nested if
 
 ## 5. Pop_Count Test
 ### Files:
