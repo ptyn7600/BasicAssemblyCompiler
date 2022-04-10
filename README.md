@@ -11,7 +11,7 @@ For each figure, there are 3 corresponding files: c file, asm file, and xml file
 * XML-file: [micro_benchmark_variable_argument.xml](testing/micro_benchmark_variable_argument.xml)
 * Asm-file: [micro_benchmark_variable_argument.asm](testing/micro_benchmark_variable_argument.asm)
 
-### General Test
+### Description
 There are 10 t-registers and 8 s-regsiters in this compiler. They are listed in [harshTable.py](hashTable.py) file. When the program runs out of the registers, it will raise the error. The current version of the xml file will run fine. To test the error case, uncomment the last variable declaration in the xml file.
 
 ### Futher considered improvements:
@@ -24,7 +24,7 @@ There are 10 t-registers and 8 s-regsiters in this compiler. They are listed in 
 * XML-file: [micro_benchmark_for.xml](testing/micro_benchmark_for.xml)
 * Asm-file: [micro_benchmark_for.asm](testing/micro_benchmark_for.asm)
 
-### General Test
+### Description
 This file tests for loop. I include two for loops in this files to see if the count variable for "for loop" increases after one another. 
 
 ### Futher considered improvements:
@@ -36,7 +36,7 @@ This file tests for loop. I include two for loops in this files to see if the co
 * XML-file: [micro_benchmark_while.xml](testing/micro_benchmark_while.xml)
 * Asm-file: [micro_benchmark_while.asm](testing/micro_benchmark_while.asm)
 
-### General Test
+### Description
 This file tests for loop. I include two while loops in this files to see if the count variable for "while loop" increases after one another. 
 
 ### Futher considered improvements:
@@ -48,9 +48,42 @@ This file tests for loop. I include two while loops in this files to see if the 
 * XML-file: [micro_benchmark_statement.xml](testing/micro_benchmark_statement.xml)
 * Asm-file: [micro_benchmark_statement.asm](testing/micro_benchmark_statement.asm)
 
-### General Test
+### Description
 This file tests statement and expression figures. Here is the supported subset of operation = { +, -, /,* }. This compiler can support up to 3 parameters in the right-hand-side of the statement. For each parameter, we have two cases: label and constant. This section will test all the possible combination of cases.
 
 ### Futher considered improvements:
 * Support %, <<, >>
 * Expand to unlimited parameters
+
+## 4. If MicroBenchmark
+### Files:
+* C-file: [micro_benchmark_if.c](testing/micro_benchmark_if.c)
+* XML-file: [micro_benchmark_if.xml](testing/micro_benchmark_if.xml)
+* Asm-file: [micro_benchmark_if.asm](testing/micro_benchmark_if.asm)
+
+### Description
+This file tests statement and expression figures. Here is the supported subset of operation = { +, -, /,* }. This compiler can support up to 3 parameters in the right-hand-side of the statement. For each parameter, we have two cases: label and constant. This section will test all the possible combination of cases.
+
+### Futher considered improvements:
+*
+
+## 5. Pop_Count Test
+### Files:
+* C-file: [micro_benchmark_statement.c](testing/micro_benchmark_statement.c)
+* XML-file: [micro_benchmark_statement.xml](testing/micro_benchmark_statement.xml)
+* Asm-file: [micro_benchmark_statement.asm](testing/micro_benchmark_statement.asm)
+
+### Description
+
+
+
+
+## 6. Full Test
+### Files:
+* C-file: [full_test.c](testing/full_test.c)
+* XML-file: [full_test.xml](testing/full_test.xml)
+* Asm-file: [full_test.asm](testing/full_test.asm)
+
+### Description
+This test will test all the figures supported by this compiler, including if, while-loop, for-loop, variables, arguments, and expressions.
+
