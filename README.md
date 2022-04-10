@@ -85,5 +85,5 @@ This file tests statement and expression figures. Here is the supported subset o
 * Asm-file: [full_test.asm](testing/full_test.asm)
 
 ### Description
-This test will test all the figures supported by this compiler, including if, while-loop, for-loop, variables, arguments, and expressions.
+This test tests all the figures supported by this compiler, including if, while-loop, for-loop, variables, arguments, and expressions.
 
