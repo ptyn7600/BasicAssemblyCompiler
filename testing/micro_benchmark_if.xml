@@ -65,7 +65,32 @@
     </if>
     <if>
         <expression>
-            <operator>&lt;</operator>
+            <operator>&gt;</operator>
+            <operand>
+                <const>6</const>
+            </operand>
+            <operand>
+                <label>x</label>
+            </operand>
+        </expression>
+        <true>
+            <statement>
+                <lhs>
+                    <label>result1</label>
+                </lhs>
+                <rhs>
+                    <const>10</const>
+                </rhs>
+            </statement>
+        </true>
+        <false>
+
+        </false>
+    </if>
+
+    <if>
+        <expression>
+            <operator>&gt;</operator>
             <operand>
                 <label>x</label>
             </operand>

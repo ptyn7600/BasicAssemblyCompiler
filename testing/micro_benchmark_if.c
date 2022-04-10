@@ -10,8 +10,12 @@ int main() {
     if (4 > 3) {
         result1 = 2;
     }
-     // Third If: Expression label - label
-    if (x < result1) {
+     // Third If: Expression const - label
+    if (6 > x) {
+        result1 = 10;
+    }
+     // Fourth If: Expression label - label
+    if (x > result1) {
         result1 = 3;
     }
     else {
