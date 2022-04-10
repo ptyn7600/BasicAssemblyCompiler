@@ -69,14 +69,12 @@ This file tests IF function. Three IFs are included to see if the compiler can i
 
 ## 5. Pop_Count Test
 ### Files:
-* C-file: [micro_benchmark_statement.c](testing/micro_benchmark_statement.c)
-* XML-file: [micro_benchmark_statement.xml](testing/micro_benchmark_statement.xml)
-* Asm-file: [micro_benchmark_statement.asm](testing/micro_benchmark_statement.asm)
+* C-file: [pop_count.c](testing/pop_count.c)
+* XML-file: [pop_count.xml](testing/pop_count.xml)
+* Asm-file: [pop_count.asm](testing/pop_count.asm)
 
 ### Description
-
-
-
+The pop_count.c program will count number of 1 in a number. One note in this compiler is that it only support signed integer while the c file actually need an unsigned integer. 
 
 ## 6. Full Test
 ### Files:
