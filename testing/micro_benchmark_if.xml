@@ -6,7 +6,12 @@
         <value>5</value>
     </variable>
     <variable>
-        <name>result</name>
+        <name>result1</name>
+        <type>int</type>
+        <value>0</value>
+    </variable>
+    <variable>
+        <name>result2</name>
         <type>int</type>
         <value>0</value>
     </variable>
@@ -23,7 +28,7 @@
         <true>
             <statement>
                 <lhs>
-                    <label>result</label>
+                    <label>result1</label>
                 </lhs>
                 <rhs>
                     <const>1</const>
@@ -32,6 +37,61 @@
         </true>
         <false>
 
+        </false>
+    </if>
+    <if>
+        <expression>
+            <operator>&gt;</operator>
+            <operand>
+                <const>4</const>
+            </operand>
+            <operand>
+                <const>3</const>
+            </operand>
+        </expression>
+        <true>
+            <statement>
+                <lhs>
+                    <label>result1</label>
+                </lhs>
+                <rhs>
+                    <const>2</const>
+                </rhs>
+            </statement>
+        </true>
+        <false>
+
+        </false>
+    </if>
+    <if>
+        <expression>
+            <operator>&lt;</operator>
+            <operand>
+                <label>x</label>
+            </operand>
+            <operand>
+                <label>result1</label>
+            </operand>
+        </expression>
+        <true>
+            <statement>
+                <lhs>
+                    <label>result1</label>
+                </lhs>
+                <rhs>
+                    <const>3</const>
+                </rhs>
+            </statement>
+        </true>
+        <false>
+            <statement>
+                <lhs>
+                    <label>result2</label>
+                </lhs>
+                <rhs>
+                    <const>4</const>
+                </rhs>
+            </statement>
         </false>
     </if>
 </program>

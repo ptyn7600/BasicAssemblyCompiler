@@ -288,7 +288,7 @@ def parseExpression(programTree, symbolTable, programInfo, level, callFrom):
                 operands.append(pasrsingCases(eachExpress.getBranches()[0], symbolTable, programInfo, level, "expression"))
         op1 = symbolTable.add_variable("ifConst", "int", operands[0]) if operands[0].isdigit() else operands[0]
         returnStr += ("addiu " + symbolTable.get_register("ifConst") + ", $0, "
-                      + symbolTable.get_value_from_name("divConst")) + "\n" if operands[0].isdigit() else ""
+                      + symbolTable.get_value_from_name("ifConst")) + "\n" if operands[0].isdigit() else ""
         op2 = symbolTable.add_variable("ifConst", "int", operands[1]) if operands[1].isdigit() else operands[1]
         returnStr += ("addiu " + symbolTable.get_register("ifConst") + ", $0, "
                       + symbolTable.get_value_from_name("ifConst") + "\n") if operands[1].isdigit() else ""
