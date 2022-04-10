@@ -149,7 +149,7 @@ int main() {
     x = y - (y - 2)
     // Operand 1 : label    -----   Operand 2: label   -----   Operand 3: label
     x = y - (y - y)
-    // ========================================================================
+    // ======================================================================== LINE 1436
     // Operator 1 : -          -----   Operator 2: *
     // Operand 1 : const    -----   Operand 2: const   -----   Operand 3: const
     x = 5 - (2 * 3)
@@ -167,7 +167,7 @@ int main() {
     x = y - (y * 2)
     // Operand 1 : label    -----   Operand 2: label   -----   Operand 3: label
     x = y - (y * y)
-    // ========================================================================
+    // ======================================================================== LINE 1629
     // Operator 1 : -          -----   Operator 2: /
      // Operand 1 : const    -----   Operand 2: const   -----   Operand 3: const
     x = 5 - (2 / 3)
@@ -185,7 +185,7 @@ int main() {
     x = y - (y / 2)
     // Operand 1 : label    -----   Operand 2: label   -----   Operand 3: label
     x = y - (y / y)
-    // ======================================================================== NOT TESTED BECAUSE SAME AS (+,*)
+    // ======================================================================== NOT TESTED BECAUSE SAME AS (+,*) - LINE 1822
     // Operator 1 : *          -----   Operator 2: +
      x = 5 * (2 + 3)
     // Operand 1 : const    -----   Operand 2: const   -----   Operand 3: label
@@ -202,7 +202,7 @@ int main() {
     x = y * (y + 2)
     // Operand 1 : label    -----   Operand 2: label   -----   Operand 3: label
     x = y * (y + y)
-    // ======================================================================== NOT TESTED BECAUSE SAME AS (-,*)
+    // ======================================================================== NOT TESTED BECAUSE SAME AS (-,*) - LINE 2015
     // Operator 1 : *          -----   Operator 2: -
     x = 5 * (2 - 3)
     // Operand 1 : const    -----   Operand 2: const   -----   Operand 3: label
@@ -219,7 +219,7 @@ int main() {
     x = y * (y - 2)
     // Operand 1 : label    -----   Operand 2: label   -----   Operand 3: label
     x = y * (y - y)
-    // ========================================================================
+    // ======================================================================== LINE 2208
     // Operator 1 : *          -----   Operator 2: *
      x = 5 * (2 * 3)
     // Operand 1 : const    -----   Operand 2: const   -----   Operand 3: label
@@ -236,7 +236,7 @@ int main() {
     x = y * (y * 2)
     // Operand 1 : label    -----   Operand 2: label   -----   Operand 3: label
     x = y * (y * y)
-    // ========================================================================
+    // ======================================================================== LINE 2401
     // Operator 1 : *          -----   Operator 2: /
      x = 5 * (2 / 3)
     // Operand 1 : const    -----   Operand 2: const   -----   Operand 3: label
@@ -253,7 +253,7 @@ int main() {
     x = y * (y / 2)
     // Operand 1 : label    -----   Operand 2: label   -----   Operand 3: label
     x = y * (y / y)
-    // ======================================================================== NOT TESTED BECAUSE SAME AS (+,/)
+    // ======================================================================== NOT TESTED BECAUSE SAME AS (+,/) - LINE 2594
     // Operator 1 : /          -----   Operator 2: +
     x = 5 * (2 + 3)
     // Operand 1 : const    -----   Operand 2: const   -----   Operand 3: label
@@ -270,7 +270,7 @@ int main() {
     x = y / (y + 2)
     // Operand 1 : label    -----   Operand 2: label   -----   Operand 3: label
     x = y / (y + y)
-    // ======================================================================== NOT TESTED BECAUSE SAME AS (-,/)
+    // ======================================================================== NOT TESTED BECAUSE SAME AS (-,/) - LINE 2787
     // Operator 1 : /          -----   Operator 2: -
     x = 5 / (2 - 3)
     // Operand 1 : const    -----   Operand 2: const   -----   Operand 3: label
@@ -287,7 +287,7 @@ int main() {
     x = y / (y - 2)
     // Operand 1 : label    -----   Operand 2: label   -----   Operand 3: label
     x = y / (y - y)
-    // ========================================================================
+    // ======================================================================== LINE 2980
     // Operator 1 : /          -----   Operator 2: *
     x = 5 / (2 * 3)
     // Operand 1 : const    -----   Operand 2: const   -----   Operand 3: label
@@ -304,7 +304,7 @@ int main() {
     x = y / (y * 2)
     // Operand 1 : label    -----   Operand 2: label   -----   Operand 3: label
     x = y / (y * y)
-    // ========================================================================
+    // ======================================================================== LINE 3173
     // Operator 1 : /          -----   Operator 2: /
     x = 5 / (2 / 3)
     // Operand 1 : const    -----   Operand 2: const   -----   Operand 3: label
