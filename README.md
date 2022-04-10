@@ -51,8 +51,9 @@ This file tests for loop. I include two while loops in this files to see if the 
 * Asm-file: [micro_benchmark_statement.asm](testing/micro_benchmark_statement.asm)
 
 ### Description
-This file tests statement and expression figures. Here is the supported subset of operation = { +, -, /,* }. This compiler can support up to 3 parameters in the right-hand-side of the statement. For each parameter, we have two cases: label and constant. This section will test all the possible combination of cases.
+This file tests statement and expression figures. Here is the supported subset of operation = { +, -, /,* }. This compiler can support up to 3 parameters in the right-hand-side of the statement. For each parameter, we have two cases: label and constant. This section will test all the possible combination of cases. The figure below illustrates cases that we will test with 4 scenarios for operator and 2 cases for operands (label, constant). In total, 128 cases are tested.
 
+![diagram](./expression-diagram.png)
 ### Futher considered improvements:
 * Support %, <<, >>
 * Expand to unlimited parameters
