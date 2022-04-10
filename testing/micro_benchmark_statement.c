@@ -44,79 +44,94 @@ int main() {
     // ======================================================================== LINE 277
     // Operator 1 : +          -----   Operator 2: +
     // Operand 1 : const    -----   Operand 2: const   -----   Operand 3: const
-    x = 5 + 2 + 3
+    x = 5 + (2 + 3)
     // Operand 1 : const    -----   Operand 2: const   -----   Operand 3: label
-    x = 5 + 2 + y
+    x = 5 + (2 + y)
     // Operand 1 : const    -----   Operand 2: label   -----   Operand 3: const
-    x = 5 + y + 10
+    x = 5 + (y + 10)
     // Operand 1 : const    -----   Operand 2: label   -----   Operand 3: label
-    x = 5 + y + y
+    x = 5 + (y + y)
     // Operand 1 : label    -----   Operand 2: const   -----   Operand 3: const
-    x = y + 2 + 3
+    x = y + (2 + 3)
     // Operand 1 : label    -----   Operand 2: const   -----   Operand 3: label
-    x = y + 2 + y
+    x = y + (2 + y)
     // Operand 1 : label    -----   Operand 2: label   -----   Operand 3: const
-    x = y + y + 2
+    x = y + (y + 2)
     // Operand 1 : label    -----   Operand 2: label   -----   Operand 3: label
-    x = y + y + y
+    x = y + (y + y)
     // ======================================================================== LINE 469
     // Operator 1 : +          -----   Operator 2: -
     // Operand 1 : const    -----   Operand 2: const   -----   Operand 3: const
-    x = 5 + 2 - 3
+    x = 5 + (2 - 3)
     // Operand 1 : const    -----   Operand 2: const   -----   Operand 3: label
-    x = 5 + 2 - y
+    x = 5 + (2 - y)
     // Operand 1 : const    -----   Operand 2: label   -----   Operand 3: const
-    x = 5 + y - 10
+    x = 5 + (y - 10)
     // Operand 1 : const    -----   Operand 2: label   -----   Operand 3: label
-    x = 5 + y - y
+    x = 5 + (y - y)
     // Operand 1 : label    -----   Operand 2: const   -----   Operand 3: const
-    x = y + 2 - 3
+    x = y + (2 - 3)
     // Operand 1 : label    -----   Operand 2: const   -----   Operand 3: label
-    x = y + 2 - y
+    x = y + (2 - y)
     // Operand 1 : label    -----   Operand 2: label   -----   Operand 3: const
-    x = y + y - 2
+    x = y + (y - 2)
     // Operand 1 : label    -----   Operand 2: label   -----   Operand 3: label
-    x = y + y - y
-    // ========================================================================
+    x = y + (y - y)
+    // ======================================================================== LINE 664
     // Operator 1 : +          -----   Operator 2: *
     // Operand 1 : const    -----   Operand 2: const   -----   Operand 3: const
-    x = 5 + 2 * 3
+    x = 5 + (2 * 3)
     // Operand 1 : const    -----   Operand 2: const   -----   Operand 3: label
-    x = 5 + 2 * y
+    x = 5 + (2 * y)
     // Operand 1 : const    -----   Operand 2: label   -----   Operand 3: const
-    x = 5 + y * 10
+    x = 5 + (y * 10)
     // Operand 1 : const    -----   Operand 2: label   -----   Operand 3: label
-    x = 5 + y * y
+    x = 5 + (y * y)
     // Operand 1 : label    -----   Operand 2: const   -----   Operand 3: const
-    x = y + 2 * 3
+    x = y + (2 * 3)
     // Operand 1 : label    -----   Operand 2: const   -----   Operand 3: label
-    x = y + 2 * y
+    x = y + (2 * y)
     // Operand 1 : label    -----   Operand 2: label   -----   Operand 3: const
-    x = y + y * 2
+    x = y + (y * 2)
     // Operand 1 : label    -----   Operand 2: label   -----   Operand 3: label
-    x = y + y * y
-    // ======================================================================== LINE 856
+    x = y + (y * y)
+    // ======================================================================== LINE 857
     // Operator 1 : +          -----   Operator 2: /
     // Operand 1 : const    -----   Operand 2: const   -----   Operand 3: const
-    x = 5 + 2 / 3
+    x = 5 + (2 / 3)
     // Operand 1 : const    -----   Operand 2: const   -----   Operand 3: label
-    x = 5 + 2 / y
+    x = 5 + (2 / y)
     // Operand 1 : const    -----   Operand 2: label   -----   Operand 3: const
-    x = 5 + y / 10
+    x = 5 + (y / 10)
     // Operand 1 : const    -----   Operand 2: label   -----   Operand 3: label
-    x = 5 + y / y
+    x = 5 + (y / y)
     // Operand 1 : label    -----   Operand 2: const   -----   Operand 3: const
-    x = y + 2 / 3
+    x = y + (2 / 3)
     // Operand 1 : label    -----   Operand 2: const   -----   Operand 3: label
-    x = y + 2 / y
+    x = y + (2 / y)
     // Operand 1 : label    -----   Operand 2: label   -----   Operand 3: const
-    x = y + y / 2
+    x = y + (y / 2)
     // Operand 1 : label    -----   Operand 2: label   -----   Operand 3: label
-    x = y + y / y
-    // ======================================================================== NOT TESTED BECAUSE THE SAME AS (+,-)
+    x = y + (y / y)
+    // ========================================================================  LINE 1050
     // Operator 1 : -          -----   Operator 2: +
-
-    // ========================================================================
+    // Operand 1 : const    -----   Operand 2: const   -----   Operand 3: const
+    x = 5 - (2 + 3)
+    // Operand 1 : const    -----   Operand 2: const   -----   Operand 3: label
+    x = 5 - (2 + y)
+    // Operand 1 : const    -----   Operand 2: label   -----   Operand 3: const
+    x = 5 - (y + 10)
+    // Operand 1 : const    -----   Operand 2: label   -----   Operand 3: label
+    x = 5 - (y + y)
+    // Operand 1 : label    -----   Operand 2: const   -----   Operand 3: const
+    x = y - (2 + 3)
+    // Operand 1 : label    -----   Operand 2: const   -----   Operand 3: label
+    x = y - (2 + y)
+    // Operand 1 : label    -----   Operand 2: label   -----   Operand 3: const
+    x = y - (y + 2)
+    // Operand 1 : label    -----   Operand 2: label   -----   Operand 3: label
+    x = y - (y + y)
+    // ======================================================================== LINE 1243
     // Operator 1 : -          -----   Operator 2: -
     // Operand 1 : const    -----   Operand 2: const   -----   Operand 3: const
     x = 5 - (2 - 3)
@@ -136,22 +151,174 @@ int main() {
     x = y - (y - y)
     // ========================================================================
     // Operator 1 : -          -----   Operator 2: *
+    // Operand 1 : const    -----   Operand 2: const   -----   Operand 3: const
+    x = 5 - (2 * 3)
+    // Operand 1 : const    -----   Operand 2: const   -----   Operand 3: label
+    x = 5 - (2 * y)
+    // Operand 1 : const    -----   Operand 2: label   -----   Operand 3: const
+    x = 5 - (y * 10)
+    // Operand 1 : const    -----   Operand 2: label   -----   Operand 3: label
+    x = 5 - (y * y)
+    // Operand 1 : label    -----   Operand 2: const   -----   Operand 3: const
+    x = y - (2 * 3)
+    // Operand 1 : label    -----   Operand 2: const   -----   Operand 3: label
+    x = y - (2 * y)
+    // Operand 1 : label    -----   Operand 2: label   -----   Operand 3: const
+    x = y - (y * 2)
+    // Operand 1 : label    -----   Operand 2: label   -----   Operand 3: label
+    x = y - (y * y)
     // ========================================================================
     // Operator 1 : -          -----   Operator 2: /
+     // Operand 1 : const    -----   Operand 2: const   -----   Operand 3: const
+    x = 5 - (2 / 3)
+    // Operand 1 : const    -----   Operand 2: const   -----   Operand 3: label
+    x = 5 - (2 / y)
+    // Operand 1 : const    -----   Operand 2: label   -----   Operand 3: const
+    x = 5 - (y / 10)
+    // Operand 1 : const    -----   Operand 2: label   -----   Operand 3: label
+    x = 5 - (y / y)
+    // Operand 1 : label    -----   Operand 2: const   -----   Operand 3: const
+    x = y - (2 / 3)
+    // Operand 1 : label    -----   Operand 2: const   -----   Operand 3: label
+    x = y - (2 / y)
+    // Operand 1 : label    -----   Operand 2: label   -----   Operand 3: const
+    x = y - (y / 2)
+    // Operand 1 : label    -----   Operand 2: label   -----   Operand 3: label
+    x = y - (y / y)
     // ======================================================================== NOT TESTED BECAUSE SAME AS (+,*)
     // Operator 1 : *          -----   Operator 2: +
+     x = 5 * (2 + 3)
+    // Operand 1 : const    -----   Operand 2: const   -----   Operand 3: label
+    x = 5 * (2 + y)
+    // Operand 1 : const    -----   Operand 2: label   -----   Operand 3: const
+    x = 5 * (y + 10)
+    // Operand 1 : const    -----   Operand 2: label   -----   Operand 3: label
+    x = 5 * (y + y)
+    // Operand 1 : label    -----   Operand 2: const   -----   Operand 3: const
+    x = y * (2 + 3)
+    // Operand 1 : label    -----   Operand 2: const   -----   Operand 3: label
+    x = y * (2 + y)
+    // Operand 1 : label    -----   Operand 2: label   -----   Operand 3: const
+    x = y * (y + 2)
+    // Operand 1 : label    -----   Operand 2: label   -----   Operand 3: label
+    x = y * (y + y)
     // ======================================================================== NOT TESTED BECAUSE SAME AS (-,*)
     // Operator 1 : *          -----   Operator 2: -
+    x = 5 * (2 - 3)
+    // Operand 1 : const    -----   Operand 2: const   -----   Operand 3: label
+    x = 5 * (2 - y)
+    // Operand 1 : const    -----   Operand 2: label   -----   Operand 3: const
+    x = 5 * (y - 10)
+    // Operand 1 : const    -----   Operand 2: label   -----   Operand 3: label
+    x = 5 * (y - y)
+    // Operand 1 : label    -----   Operand 2: const   -----   Operand 3: const
+    x = y * (2 - 3)
+    // Operand 1 : label    -----   Operand 2: const   -----   Operand 3: label
+    x = y * (2 - y)
+    // Operand 1 : label    -----   Operand 2: label   -----   Operand 3: const
+    x = y * (y - 2)
+    // Operand 1 : label    -----   Operand 2: label   -----   Operand 3: label
+    x = y * (y - y)
     // ========================================================================
     // Operator 1 : *          -----   Operator 2: *
+     x = 5 * (2 * 3)
+    // Operand 1 : const    -----   Operand 2: const   -----   Operand 3: label
+    x = 5 * (2 * y)
+    // Operand 1 : const    -----   Operand 2: label   -----   Operand 3: const
+    x = 5 * (y * 10)
+    // Operand 1 : const    -----   Operand 2: label   -----   Operand 3: label
+    x = 5 * (y * y)
+    // Operand 1 : label    -----   Operand 2: const   -----   Operand 3: const
+    x = y * (2 * 3)
+    // Operand 1 : label    -----   Operand 2: const   -----   Operand 3: label
+    x = y * (2 * y)
+    // Operand 1 : label    -----   Operand 2: label   -----   Operand 3: const
+    x = y * (y * 2)
+    // Operand 1 : label    -----   Operand 2: label   -----   Operand 3: label
+    x = y * (y * y)
     // ========================================================================
     // Operator 1 : *          -----   Operator 2: /
+     x = 5 * (2 / 3)
+    // Operand 1 : const    -----   Operand 2: const   -----   Operand 3: label
+    x = 5 * (2 / y)
+    // Operand 1 : const    -----   Operand 2: label   -----   Operand 3: const
+    x = 5 * (y / 10)
+    // Operand 1 : const    -----   Operand 2: label   -----   Operand 3: label
+    x = 5 * (y / y)
+    // Operand 1 : label    -----   Operand 2: const   -----   Operand 3: const
+    x = y * (2 / 3)
+    // Operand 1 : label    -----   Operand 2: const   -----   Operand 3: label
+    x = y * (2 / y)
+    // Operand 1 : label    -----   Operand 2: label   -----   Operand 3: const
+    x = y * (y / 2)
+    // Operand 1 : label    -----   Operand 2: label   -----   Operand 3: label
+    x = y * (y / y)
     // ======================================================================== NOT TESTED BECAUSE SAME AS (+,/)
     // Operator 1 : /          -----   Operator 2: +
+    x = 5 * (2 + 3)
+    // Operand 1 : const    -----   Operand 2: const   -----   Operand 3: label
+    x = 5 / (2 + y)
+    // Operand 1 : const    -----   Operand 2: label   -----   Operand 3: const
+    x = 5 / (y + 10)
+    // Operand 1 : const    -----   Operand 2: label   -----   Operand 3: label
+    x = 5 / (y + y)
+    // Operand 1 : label    -----   Operand 2: const   -----   Operand 3: const
+    x = y / (2 + 3)
+    // Operand 1 : label    -----   Operand 2: const   -----   Operand 3: label
+    x = y / (2 + y)
+    // Operand 1 : label    -----   Operand 2: label   -----   Operand 3: const
+    x = y / (y + 2)
+    // Operand 1 : label    -----   Operand 2: label   -----   Operand 3: label
+    x = y / (y + y)
     // ======================================================================== NOT TESTED BECAUSE SAME AS (-,/)
     // Operator 1 : /          -----   Operator 2: -
+    x = 5 / (2 - 3)
+    // Operand 1 : const    -----   Operand 2: const   -----   Operand 3: label
+    x = 5 / (2 - y)
+    // Operand 1 : const    -----   Operand 2: label   -----   Operand 3: const
+    x = 5 / (y - 10)
+    // Operand 1 : const    -----   Operand 2: label   -----   Operand 3: label
+    x = 5 / (y - y)
+    // Operand 1 : label    -----   Operand 2: const   -----   Operand 3: const
+    x = y / (2 - 3)
+    // Operand 1 : label    -----   Operand 2: const   -----   Operand 3: label
+    x = y / (2 - y)
+    // Operand 1 : label    -----   Operand 2: label   -----   Operand 3: const
+    x = y / (y - 2)
+    // Operand 1 : label    -----   Operand 2: label   -----   Operand 3: label
+    x = y / (y - y)
     // ========================================================================
     // Operator 1 : /          -----   Operator 2: *
+    x = 5 / (2 * 3)
+    // Operand 1 : const    -----   Operand 2: const   -----   Operand 3: label
+    x = 5 / (2 * y)
+    // Operand 1 : const    -----   Operand 2: label   -----   Operand 3: const
+    x = 5 / (y * 10)
+    // Operand 1 : const    -----   Operand 2: label   -----   Operand 3: label
+    x = 5 / (y * y)
+    // Operand 1 : label    -----   Operand 2: const   -----   Operand 3: const
+    x = y / (2 * 3)
+    // Operand 1 : label    -----   Operand 2: const   -----   Operand 3: label
+    x = y / (2 * y)
+    // Operand 1 : label    -----   Operand 2: label   -----   Operand 3: const
+    x = y / (y * 2)
+    // Operand 1 : label    -----   Operand 2: label   -----   Operand 3: label
+    x = y / (y * y)
     // ========================================================================
     // Operator 1 : /          -----   Operator 2: /
+    x = 5 / (2 / 3)
+    // Operand 1 : const    -----   Operand 2: const   -----   Operand 3: label
+    x = 5 / (2 / y)
+    // Operand 1 : const    -----   Operand 2: label   -----   Operand 3: const
+    x = 5 / (y / 10)
+    // Operand 1 : const    -----   Operand 2: label   -----   Operand 3: label
+    x = 5 / (y / y)
+    // Operand 1 : label    -----   Operand 2: const   -----   Operand 3: const
+    x = y / (2 / 3)
+    // Operand 1 : label    -----   Operand 2: const   -----   Operand 3: label
+    x = y / (2 / y)
+    // Operand 1 : label    -----   Operand 2: label   -----   Operand 3: const
+    x = y / (y /2)
+    // Operand 1 : label    -----   Operand 2: label   -----   Operand 3: label
+    x = y / (y / y)
 }
