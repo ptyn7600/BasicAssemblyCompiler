@@ -111,7 +111,7 @@
         <expression>
             <operator>>=</operator>
             <operand>
-                <label>result<  /label>
+                <label>result</label>
             </operand>
             <operand>
                 <label>temp</label>
